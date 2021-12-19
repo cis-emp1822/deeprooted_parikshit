@@ -12,9 +12,10 @@ part 'search_coins_state.dart';
 class SearchCoinsCubit extends Cubit<SearchCoinsState> {
   SearchCoinsCubit({this.coinsRepo}) : super(SearchCoinsInitial());
   final CoinsRepo? coinsRepo;
-
-  void getMeaningFromWord(
-      {String searchKeyword = '', bool showBids = false}) async {
+  bool showBids = false;
+  void getDataForCoins(
+      {String searchKeyword = '', bool showBidsTapped = false}) async {
+    if (showBidsTapped) showBids = !showBids;
     try {
       if (searchKeyword.isNotEmpty) {
         emit(LoadingState());
@@ -26,11 +27,9 @@ class SearchCoinsCubit extends Cubit<SearchCoinsState> {
           emit(LoadedBidsState(bidData, convData));
         }
       } else {
-        emit(ErrorState(errorMessage: "Enter any Search Keyword"));
-        log("Enter any Search Keyword");
+        emit(ErrorState(errorMessage: "Enter a currency pair to load data"));
+        log("Enter a currency pair to load data");
       }
-      // some time later...
-
     } catch (e) {
       emit(ErrorState(errorMessage: "Something Went Wrong"));
     }

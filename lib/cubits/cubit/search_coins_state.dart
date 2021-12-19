@@ -28,7 +28,7 @@ class LoadedBidsState extends SearchCoinsState {
   final BidAndAsk bidAndAsk;
 
   @override
-  List<Object> get props => [bidAndAsk];
+  List<Object> get props => [bidAndAsk, conversionBrief];
 }
 
 class ErrorState extends SearchCoinsState {

@@ -10,9 +10,17 @@ class Globals {
     fontSize: 24,
     fontWeight: FontWeight.bold,
   );
+  static Color? textFieldColor = Colors.grey[200];
+  static Color? themeColor = const Color.fromARGB(255, 59, 143, 185);
+  static Color? customIcoColor = const Color.fromARGB(255, 39, 180, 173);
   static const smallTextStyle = TextStyle(
     color: Colors.black,
     fontSize: 14,
     fontWeight: FontWeight.w100,
   );
 }
+
+double? getHeight(BuildContext context, double percent) =>
+    MediaQuery.of(context).size.height * percent / 100;
+double? getWidth(BuildContext context, double percent) =>
+    MediaQuery.of(context).size.width * percent / 100;
