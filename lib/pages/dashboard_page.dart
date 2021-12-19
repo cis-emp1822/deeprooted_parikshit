@@ -1,6 +1,8 @@
 import 'package:deeprooted_parikshit/cubits/cubit/search_coins_cubit.dart';
 import 'package:deeprooted_parikshit/healers/globals.dart';
+import 'package:deeprooted_parikshit/models/bids_and_ask.dart';
 import 'package:deeprooted_parikshit/models/conversion_brief.dart';
+import 'package:deeprooted_parikshit/widgets/bids_and_asks_holder.dart';
 import 'package:deeprooted_parikshit/widgets/conversion_brief_holder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -27,7 +29,7 @@ class _MyHomePageState extends State<MyHomePage> {
       return Scaffold(
         body: Center(
             child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 28.0, vertical: 18),
+          padding: const EdgeInsets.symmetric(horizontal: 18.0, vertical: 18),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.end,
@@ -89,7 +91,12 @@ class _MyHomePageState extends State<MyHomePage> {
                         callfunction(context, showBidsTapped: true),
                     child: Text(context.read<SearchCoinsCubit>().showBids
                         ? "HIDE ORDER BOOK"
-                        : "SHOW ORDER BOOK"))
+                        : "SHOW ORDER BOOK")),
+              if (state is LoadedBidsState)
+                Flexible(
+                  child:
+                      BidsAndAsksHolder(bidAndAsk: state.props[1] as BidAndAsk),
+                ),
             ],
           ),
         )),
