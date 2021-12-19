@@ -79,6 +79,16 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                   ),
                 ),
+              if (state is ErrorState)
+                Center(
+                  child: Text(
+                    state.errorMessage!,
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(
+                      fontSize: 20,
+                    ),
+                  ),
+                ),
               if (state is LoadedBriefState || state is LoadedBidsState)
                 Flexible(
                   child: ConversionBriefHolder(
