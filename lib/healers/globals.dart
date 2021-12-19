@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 
 class Globals {
-  static const base_url = 'https://www.bitstamp.net/api/';
+  static const base_url = 'https://www.bitstamp.net/api';
   static const token = '08a5e3222b8be11a8bdcbaa455cb0f7ab1e7f608';
   static const basicTextStyle = TextStyle(
     color: Colors.black,

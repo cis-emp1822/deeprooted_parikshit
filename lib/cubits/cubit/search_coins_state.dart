@@ -13,13 +13,22 @@ class LoadingState extends SearchCoinsState {
   List<Object> get props => [];
 }
 
-class LoadedState extends SearchCoinsState {
-  LoadedState(this.conversionBrief);
+class LoadedBriefState extends SearchCoinsState {
+  LoadedBriefState(this.conversionBrief);
 
   final ConversionBrief conversionBrief;
 
   @override
   List<Object> get props => [conversionBrief];
+}
+
+class LoadedBidsState extends SearchCoinsState {
+  LoadedBidsState(this.bidAndAsk, this.conversionBrief);
+  final ConversionBrief conversionBrief;
+  final BidAndAsk bidAndAsk;
+
+  @override
+  List<Object> get props => [bidAndAsk];
 }
 
 class ErrorState extends SearchCoinsState {
