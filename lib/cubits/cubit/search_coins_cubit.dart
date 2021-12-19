@@ -14,17 +14,20 @@ class SearchCoinsCubit extends Cubit<SearchCoinsState> {
   final CoinsRepo? coinsRepo;
 
   void getMeaningFromWord(
-      {String searchKeyword = '', bool showDetails = false}) async {
+      {String searchKeyword = '', bool showBids = false}) async {
     try {
       if (searchKeyword.isNotEmpty) {
         emit(LoadingState());
-        final movies = await coinsRepo!.getConversionBrief(searchKeyword);
-        emit(LoadedState(movies));
+        final convData = await coinsRepo!.getConversionBrief(searchKeyword);
+        if (!showBids) {
+          emit(LoadedBriefState(convData));
+        } else {
+          final bidData = await coinsRepo!.getBidsAndAsks(searchKeyword);
+          emit(LoadedBidsState(bidData, convData));
+        }
       } else {
-        emit(ErrorState(
-            errorMessage:
-                "The user has denied the use of speech recognition."));
-        log("The user has denied the use of speech recognition.");
+        emit(ErrorState(errorMessage: "Enter any Search Keyword"));
+        log("Enter any Search Keyword");
       }
       // some time later...
 
