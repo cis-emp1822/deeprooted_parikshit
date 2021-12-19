@@ -11,7 +11,7 @@ class BidAndAsk {
     microtimestamp = json['microtimestamp'];
     if (json['bids'] != null) {
       bids = [];
-      json['bids'].forEach((List<String>? v) {
+      json['bids'].forEach((v) {
         List<double>? internalPoint = [];
         v?.forEach(
             (element) => internalPoint.add(double.tryParse(element) ?? 0));
@@ -20,7 +20,7 @@ class BidAndAsk {
     }
     if (json['asks'] != null) {
       asks = [];
-      json['asks'].forEach((List<String>? v) {
+      json['asks'].forEach((v) {
         List<double>? internalPoint = [];
         v?.forEach(
             (element) => internalPoint.add(double.tryParse(element) ?? 0));

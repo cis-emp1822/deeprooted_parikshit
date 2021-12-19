@@ -83,7 +83,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       conversionBrief: state.props[0] as ConversionBrief,
                       conversionName: _searchController.text),
                 ),
-              if (state is! SearchCoinsInitial)
+              if (state is LoadedBriefState || state is LoadedBidsState)
                 TextButton(
                     onPressed: () =>
                         callfunction(context, showBidsTapped: true),
