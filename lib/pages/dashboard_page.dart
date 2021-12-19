@@ -82,7 +82,14 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: ConversionBriefHolder(
                       conversionBrief: state.props[0] as ConversionBrief,
                       conversionName: _searchController.text),
-                )
+                ),
+              if (state is! SearchCoinsInitial)
+                TextButton(
+                    onPressed: () =>
+                        callfunction(context, showBidsTapped: true),
+                    child: Text(context.read<SearchCoinsCubit>().showBids
+                        ? "HIDE ORDER BOOK"
+                        : "SHOW ORDER BOOK"))
             ],
           ),
         )),
